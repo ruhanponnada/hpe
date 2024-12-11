@@ -1,0 +1,125 @@
+{
+  "$schema": "https://mintlify.com/schema.json",
+  "name": "Hewlett Packard Enterprise",
+  "logo": {
+    "dark": "/logo/dark.svg",
+    "light": "/logo/light.svg",
+    "href": "https://www.hpe.com/us/en/home.html"
+  },
+  "favicon": "/favicon.png",
+  "colors": {
+    "primary": "#01a982",
+    "light": "#07C983",
+    "dark": "#01a982",
+    "anchors": {
+      "from": "#01a982",
+      "to": "#07C983"
+    }
+  },
+  "topbarLinks": [
+    {
+      "name": "Support",
+      "url": "https://support.hpe.com/connect/s/"
+    }
+  ],
+  "modeToggle": {
+    "default": "light"
+  },
+  "font":{
+    "headings": {
+      "family": "MetricHPEXS",
+      "url": "https://www.hpe.com/apps/hpeweb-ui/fonts/hpexs/MetricHPEXS-Regular.woff2",
+      "format": "woff2",
+      "weight": 400
+    }
+  },
+  "background": {
+    "style": "gradient"
+  },
+  "topbarCtaButton": {
+    "name": "Sign In",
+    "url": "https://auth.hpe.com/hpe/cf/?fromURI=%252Foauth2%252Fv1%252Fauthorize%252Fredirect%253Fokta_key%253DDwarh1P0M6Ar-aTYeIoHFpkxCr20NbUXuIo-OZlMVl0",
+    "arrow": false
+  },
+  "primaryTab": { "name": "Home" },
+  "tabs": [
+    {
+      "name": "Guides",
+      "url": "docs/greenlake/guides"
+    },
+    {
+      "name": "Services",
+      "url": "docs/greenlake/services"
+    },
+    {
+      "name": "Community",
+      "url": "docs/greenlake/community"
+    },
+    {
+      "name": "API Client Credentials",
+      "url": "api-reference/api-client",
+      "openapi": "/open-api.json"
+    },
+    {
+      "name": "Audit Logs",
+      "url": "api-reference/audit-logs",
+      "openapi": "/audit-api.json"
+    },
+    {
+      "name": "Backup and Recovery",
+      "url": "api-reference/backup",
+      "openapi": "/backup-api.json"
+    }
+  ],
+  "anchors": [
+    {
+      "name": "Community",
+      "icon": "users",
+      "url": "https://community.hpe.com/"
+    },
+    {
+      "name": "Blog",
+      "icon": "newspaper",
+      "url": "https://www.hpe.com/us/en/communities.html"
+    },
+    {
+      "name": "Contact Us",
+      "icon": "headset",
+      "url": "https://www.hpe.com/us/en/contact-hpe.html"
+    }
+  ],
+  "navigation": [
+    {
+      "group": "",
+      "pages": ["home"]
+    },
+    {
+      "group": "Guides",
+      "pages": [
+        "docs/greenlake/guides/guides",
+        "docs/greenlake/guides/public/authentication/authentication",
+        "docs/greenlake/guides/public/standards/versioning_basics",
+        "docs/greenlake/guides/public/support/contact-us",
+        "docs/greenlake/guides/public/frequently_asked_questions"
+      ]
+    },
+    {
+      "group": "Services",
+      "pages": [
+        "docs/greenlake/services/services",
+        "docs/greenlake/services/credentials/public"
+      ]
+    },
+    {
+      "group": "Community",
+      "pages": ["docs/greenlake/community/community"]
+    }
+
+  ],
+  "footerSocials": {
+    "x": "https://twitter.com/hpe",
+    "facebook": "http://facebook.com/hewlettpackardenterprise",
+    "youtube": "http://www.youtube.com/@hpe",
+    "linkedin": "https://www.linkedin.com/company/hewlett-packard-enterprise"
+  }
+}

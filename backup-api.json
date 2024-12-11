@@ -1,0 +1,466 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "description": "Backup and Recovery API",
+    "license": {
+      "name": "HPE End User License Agreement",
+      "url": "https://www.hpe.com/us/en/software/licensing.html"
+    },
+    "title": "Backup and Recovery API",
+    "version": "1.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://us-west.api.greenlake.hpe.com"
+    },
+    {
+      "url": "https://eu-west.api.greenlake.hpe.com"
+    },
+    {
+      "url": "https://eu-central.api.greenlake.hpe.com"
+    },
+    {
+      "url": "https://ap-northeast.api.greenlake.hpe.com"
+    }
+  ],
+  "security": [
+    {
+      "bearer": []
+    }
+  ],
+  "tags": [
+    {
+      "description": "The hypervisor-managers API allows the management of hypervisor-managers",
+      "name": "hypervisor-managers"
+    }
+  ],
+  "paths": {
+    "/backup-recovery/v1alpha1/hypervisor-managers": {
+      "post": {
+        "description": "Register the hypervisor manager for data management.",
+        "operationId": "HypervisorManagerCreate",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "Registers a hypervisor manager server.",
+                "properties": {
+                  "credentials": {
+                    "description": "Hypervisor server credentials.",
+                    "properties": {
+                      "password": {
+                        "description": "Password used to access the hypervisor server.",
+                        "type": "string"
+                      },
+                      "username": {
+                        "description": "Name of the user used to access the hypervisor server.",
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "dataOrchestratorId": {
+                    "description": "UUID string uniquely identifying the Data Orchestrator.",
+                    "example": "8b4c14a6-3cd5-4907-97c4-cf44c5b642e5",
+                    "type": "string"
+                  },
+                  "description": {
+                    "description": "A brief description of the hypervisor manager.",
+                    "maxLength": 255,
+                    "type": "string"
+                  },
+                  "displayName": {
+                    "description": "User defined name for the hypervisor manager.",
+                    "example": "myvcenter1",
+                    "type": "string"
+                  },
+                  "hypervisorManagerType": {
+                    "description": "The type of the hypervisor manager. Currently only vCenter is supported.",
+                    "enum": [
+                      "VMWARE_VCENTER"
+                    ],
+                    "type": "string"
+                  },
+                  "networkAddress": {
+                    "description": "An IP address or hostname or FQDN to address the hypervisor manager.",
+                    "example": "192.168.0.1",
+                    "maxLength": 255,
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "networkAddress",
+                  "hypervisorManagerType",
+                  "dataOrchestratorId",
+                  "credentials"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "202": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/EmptyResponse"
+                    }
+                  ]
+                }
+              }
+            },
+            "description": "Accepted",
+            "headers": {
+              "Location": {
+                "description": "This contains the URI of the task used to monitor the request.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Bad request"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unauthorized request"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal / unexpected error"
+          }
+        },
+        "summary": "Register a new hypervisor manager.",
+        "tags": [
+          "hypervisor-managers"
+        ]
+      }
+    },
+    "/backup-recovery/v1alpha1/hypervisor-managers/{id}": {
+      "delete": {
+        "description": "Unregister a hypervisor manager.",
+        "operationId": "UnregisterHypervisorManager",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/HypervisorManagerComp/properties/id"
+            }
+          },
+          {
+            "description": "Force option to forcefully remove hypervisor during unregister operation when underlying resources cannot be removed.",
+            "in": "query",
+            "name": "force",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/EmptyResponse"
+                    }
+                  ]
+                }
+              }
+            },
+            "description": "Accepted",
+            "headers": {
+              "Location": {
+                "description": "This contains the URI of the task used to monitor the request.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Bad request"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unauthorized request"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not found"
+          },
+          "412": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Precondition failed (if the generation number is invalid)."
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal / unexpected error"
+          }
+        },
+        "summary": "Unregister a hypervisor manager.",
+        "tags": [
+          "hypervisor-managers"
+        ]
+      },
+      "patch": {
+        "description": "Update attributes for a hypervisor manager.",
+        "operationId": "HypervisorManagerUpdate",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/HypervisorManagerComp/properties/id"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/merge-patch+json": {
+              "schema": {
+                "properties": {
+                  "credentials": {
+                    "description": "Hypervisor server credentials.",
+                    "properties": {
+                      "password": {
+                        "description": "Password used to access the hypervisor server.",
+                        "type": "string"
+                      },
+                      "username": {
+                        "description": "Name of the user used to access the hypervisor server.",
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "description": {
+                    "description": "A brief description of the hypervisor manager.",
+                    "maxLength": 255,
+                    "type": "string"
+                  },
+                  "displayName": {
+                    "description": "User defined name for the hypervisor manager.",
+                    "example": "myvcenter1",
+                    "type": "string"
+                  },
+                  "networkAddress": {
+                    "description": "An IP address or hostname or FQDN to address the hypervisor manager.",
+                    "example": "192.168.0.1",
+                    "maxLength": 255,
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "202": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/EmptyResponse"
+                    }
+                  ]
+                }
+              }
+            },
+            "description": "Accepted",
+            "headers": {
+              "Location": {
+                "description": "This contains the URI of the task used to monitor the request.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Bad request"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unauthorized request"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Internal / unexpected error"
+          }
+        },
+        "summary": "Update a hypervisor manager.",
+        "tags": [
+          "hypervisor-managers"
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "EmptyResponse": {
+        "type": "object"
+      },
+      "ErrorResponse": {
+        "properties": {
+          "debugId": {
+            "description": "A unique identifier for the request",
+            "example": "f57dcca3345820eb579c9317ce36dd92",
+            "type": "string"
+          },
+          "errorCode": {
+            "description": "A machine friendly identifier for the error response",
+            "type": "string"
+          },
+          "httpStatusCode": {
+            "description": "The HTTP status code of the response",
+            "type": "integer"
+          },
+          "message": {
+            "description": "A user-friendly error message",
+            "example": "An example error message",
+            "type": "string"
+          }
+        },
+        "required": [
+          "httpStatusCode",
+          "message",
+          "errorCode",
+          "debugId"
+        ]
+      },
+      "HypervisorManagerComp": {
+        "description": "Represents a single instance of a hypervisor manager (Vmware vCenter).\n",
+        "properties": {
+          "id": {
+            "description": "UUID string uniquely identifying the hypervisor manager.",
+            "example": "9b4c14a6-3cd5-4907-97c4-cf44c5b641e4",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "type": "object"
+      }
+    },
+    "securitySchemes": {
+      "bearer": {
+        "bearerFormat": "JWT",
+        "description": "The Data Service Cloud Console API uses a JWT bearer token for authentication.\nAn authentication token can be obtained from the HPE GreenLake console.\n",
+        "scheme": "bearer",
+        "type": "http"
+      }
+    }
+  }
+}

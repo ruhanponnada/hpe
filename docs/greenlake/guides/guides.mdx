@@ -1,0 +1,110 @@
+---
+title: Getting started
+description: HPE GreenLake APIs are a set of RESTful APIs provided by HPE GreenLake to enable programmatic access to diverse services offered on the HPE GreenLake platform. These APIs allow you to automate the management of resources, integrate with third-party tools, and enhance your workflow efficiency by interacting with the HPE GreenLake infrastructure.
+sidebarTitle: Getting Started Guide
+---
+
+This page explains how developers can get started using the HPE GreenLake Developer Portal.
+
+<Info>
+**INFO**
+
+The [HPE GreenLake Edge to Cloud Platform User Guide](https://support.hpe.com/hpesc/public/docDisplay?docId=a00120892en_us) has information for customer administrators and customer users about configuring and using HPE GreenLake.
+</Info>
+
+## Prerequisites for using HPE GreenLake platform APIs
+
+
+To use HPE GreenLake APIs, you need:
+
+* An active HPE GreenLake account. See [Creating an HPE account](/docs/greenlake/guides/#creating-an-hpe-account) .
+* Access to the HPE GreenLake platform APIs. See [Requesting access to HPE GreenLake platform APIs](/docs/greenlake/guides/#requesting-access-to-hpe-greenlake-platform-apis) .
+* API client credentials, including a client ID and secret key. See [Configuring API client credentials](/docs/greenlake/guides/public/authentication/authentication/#configuring-api-client-credentials) for details on this process.
+* An access token to include in the headers of your API requests. See [Generate an access token](/docs/greenlake/guides/public/authentication/authentication/#generate-an-access-token) for details on this process.
+* Knowledge of RESTful API principles.
+* A development environment with tools to make HTTP requests, such as cURL, Postman, or a programming language like Python.
+
+## Creating an HPE account
+
+Your HPE Account is the identity and access management infrastructure service for HPE customers and partners. It provides a consistent identity and access experience between all HPE applications with centralized user registration, profile management, authentication services (including MFA), and support for third party IdPs (Identity Providers) / SSO (Single Sign On).
+
+1.  To create an HPE account, click **Login** .
+2.  Click **Sign Up** at the bottom of the page. The **Create an HPE Account** page appears.
+3.  Provide the following account information:
+    * **Email** —The email address for your account.
+    * **Password** —A password for accessing your account.
+    * **First Name/Last Name** —Your first and last name.
+    * **Organization Information** —The name and address details of your business.
+    * **Language** — Select your preferred language.
+    * **Time Zone** — Select your time zone.
+    * **Phone Number** — Enter your phone number.
+4.  Select your contact preferences.
+5.  Acknowledge the **HPE Terms of Use** by selecting the check box.
+6.  Click **Create Account** . A verification email sent message appears.
+7.  Verify your email address and activate your new HPE account using the link provided in the email.
+
+###  Signing in to HPE GreenLake platform
+
+After creating your HPE account, you can log in to HPE GreenLake platform with the credentials that you provided when you created the account.
+
+1.  Go to [https://common.cloud.hpe.com/](https://common.cloud.hpe.com/) .
+2.  Enter your login credentials. The Welcome to HPE GreenLake page appears. Here, you can create a new workspace or sign in to an existing workspace.
+
+<Note>
+**NOTE**
+
+If you need assistance to manage your HPE account, including recovering forgotten passwords, see [HPE Account Help](https://support.hpe.com/hpesc/public/docDisplay?docId=sd00003196en_us&page=GUID-85481EA8-668D-4CAB-A768-41C9DEABE756.html).
+</Note>
+
+
+## Roles and permissions hierarchy
+
+Some content on the portal can be made completely private, or it can be visible to a restricted group (for example: partners, developers, or administrators).
+
+User roles allow users to access the restricted content. The portal comes with the following roles:
+
+1.  Public
+2.  Partner
+
+### Public
+
+1.  Guest — Every visitor will have this role with a single permission to read all public content on the portal.
+2.  Authenticated-User — Every logged in user will have this role.
+
+### Partner
+
+Users with the Partner role can access restricted content that is specific to a Partner.
+
+
+## Discover and try the APIs
+
+
+To find HPE GreenLake APIs, browse the service catalog or use the search function.
+
+1.  Login to the HPE GreenLake Developer Portal.
+2.  There are three ways to find APIs:
+    * Click **Services** \> and select a service from the navigation menu.
+    * Enter the name of an API into the search. The results for your search appear beneath the search bar.
+    * Navigate to **Service > Overview** to view a catalog of available APIs along with a description.
+3.  Click **API reference** from the service documentation and navigate to an API request. Use the **Try It** option to experiment with the APIs directly within the platform. This tool allows you to make API calls to understand their behavior and validate their responses.
+
+<Info>
+**TRY IT**
+
+The **Try It** tool interacts with the actual environment and not a separate sandbox, so any changes you make will affect your production data. It is advisable to use the tool with caution and verify the impact of the changes in a controlled manner before integrating them into your live applications. Always test with non-critical or sample data to mitigate potential risks.
+</Info>
+
+
+## Requesting access to HPE GreenLake platform APIs
+
+You must create a support request to get access to HPE GreenLake platform APIs.
+
+1.  While logged in to HPE GreenLake platform, click **Help & Support** .
+2.  In the **Help** section, select **HPE GreenLake** .
+3.  In the **Support** section, select **Workspace, User, and Onboarding Support** .
+4.  Fill in the requested details.
+    * Enter your name, company name, email, and phone number.
+    * Choose your preferred contact method, either email or phone.
+    * In **Support Issue Details** , choose **HPE GreenLake platform API onboarding** .
+    * Provide the workspace name and the email address associated with it. To find your workspace name, click **Manage** , then click **User** to get the workspace user email address.
+5.  Click **Submit** . A ticket is created with HPE support. Expect a resolution within 24 hours.

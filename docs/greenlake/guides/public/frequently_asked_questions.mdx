@@ -1,0 +1,66 @@
+---
+title: Frequently Asked Questions
+description: This frequently asked question (FAQ) provides general information about HPE GreenLake APIs.
+mode: wide
+---
+
+See the [official documentation](https://developer.greenlake.hpe.com/) or [contact HPE support](/docs/greenlake/guides/public/support/contact-us/) for detailed guidance and specific queries.
+
+The FAQ contains the following sections:
+
+* [Functionality and features](#functionality-and-features) —Find out about automating provisioning, monitoring resources, metrics, integrating HPE GreenLake APIs with other tools, and more.
+* [Security and compliance](#security-and-compliance) —Learn about how to secure API communication, HPE GreenLake APIs and regulatory compliance, and auditing.
+* [Troubleshooting and support](#troubleshooting-and-support) —Discover how to troubleshoot connectivity, rate limit, 401 unauthorized errors, and more.
+* [Advanced topics](#advanced-topics) —Advanced topics include custom workflows, large-scale deployments, and integrating with AI and ML workflows.
+
+
+## Functionality and features
+
+<AccordionGroup>
+  <Accordion title="What types of resources can I manage with HPE GreenLake APIs?">
+  With HPE GreenLake APIs, you can manage several types of resources and operations, including:
+
+* **Compute** —Provision, scale, and manage virtual machines and compute instances.
+* **Storage** —Allocate and manage storage volumes and capacities.
+* **Networking** —Configure and manage network settings and connections.
+* **Devices** —Manage connected devices across the cloud environment.
+* **Subscriptions** —Handle and optimize subscription plans and service usage.
+* **Users** —Manage user accounts, roles, and permissions.
+* **Workspaces** —Organize and manage cloud resources and applications within specific workspaces.
+
+In addition to managing these resources, you can use HPE GreenLake APIs to audit and control security settings, access permissions, and monitor resource usage and performance. For a detailed introduction and more examples, see the [blog post series on the HPE Developer Community Portal](https://developer.hpe.com/blog/get-started-with-the-foundational-apis-for-the-hpe-greenlake-edge-to-cloud-platform-%E2%80%93-part-1-introduction-to-the-apis/).
+  </Accordion>
+    <Accordion title="Can I automate the provisioning of resources using the APIs?">
+Yes, you can automate the provisioning of resources using HPE GreenLake APIs.
+
+1.  Create an API client credential to obtain the necessary credentials (client ID and secret key).
+2.  Using these credentials, you can make API calls to provision various resources such as virtual machines, storage volumes, and network configurations. The APIs allow you to specify resource parameters, configure settings, and deploy infrastructure programmatically.
+
+For detailed instructions and available API endpoints for provisioning, see the [HPE GreenLake API Documentation](https://developer.greenlake.hpe.com/docs/greenlake/services/).
+  </Accordion>
+    <Accordion title="How do I monitor resource usage with HPE GreenLake APIs?">
+You need access to specific APIs and the necessary credentials to monitor resource usage. To do this:
+
+1.  Ensure you have access to the appropriate API, such as the Compute Operations Management (COM) API for CPU utilization.
+2.  Create credentials for the API through the HPE GreenLake API tile by selecting the " Service Manager " option. Use these credentials to make calls to the API endpoints that provide metrics and usage data, such as real-time and historical data on CPU utilization, memory usage, and storage capacity. This data helps optimize resource allocation and maintain efficient operations.
+
+  </Accordion>
+<Accordion title="What types of metrics can I access via the APIs?">
+
+Metrics available via HPE GreenLake APIs include:
+
+* **Compute metrics** —CPU usage, memory consumption, uptime, and so on.
+* **Storage metrics** —Disk usage, I/O operations, available capacity, and so on.
+* **Network metrics** —Bandwidth usage, latency, packet loss, and so on.
+* **Cost metrics** —Resource cost, billing data, and usage costs.
+
+</Accordion>
+<Accordion title="How do I integrate HPE GreenLake APIs with other tools?">
+You can integrate HPE GreenLake APIs with other tools by making API calls directly from those tools or by using middleware that supports HTTP requests. For example, you can integrate with:
+
+* **Monitoring tools** —Integrate with tools like Prometheus or Datadog for advanced monitoring.
+* **CI/CD pipelines** —Use APIs in Jenkins or GitHub Actions for deployment automation.
+* **ITSM tools** —Connect with IT service management tools like ServiceNow for workflow automation.
+
+</Accordion>
+</AccordionGroup>

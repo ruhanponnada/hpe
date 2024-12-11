@@ -1,0 +1,102 @@
+---
+mode: 'custom'
+---
+
+export function openSearch() {
+  document.getElementById('search-bar-entry').click();
+}
+
+<div className="relative w-full flex items-center justify-center" style={{ height: '24rem', overflow: 'hidden'}}>
+  <div className="absolute inset-0 bg-primary dark:bg-primary-light" style={{opacity: 0.05 }}></div>
+  <div style={{ position: 'absolute', textAlign: 'center', padding: '0 1rem' }}>
+    <div
+      className="text-gray-900 dark:text-gray-200"
+      style={{
+       fontWeight: '600',
+       fontSize: '28px',
+       margin: '0',
+      }}
+    >
+        HPE GreenLake Developer Portal
+    </div>
+
+    <p
+      className="prose prose-gray dark:prose-invert"
+      style={{
+        marginTop: '1rem',
+       fontWeight: '400',
+       fontSize: '16px',
+       maxWidth: '42rem'
+      }}
+    >
+    This portal presents the secure and scalable framework of APIs that helps you achieve data-first modernization by bringing the cloud experience to your distributed apps and data.
+
+
+    </p>
+    <div className="flex items-center justify-center">
+    <button
+      type="button"
+      className="hidden w-full lg:flex items-center text-sm leading-6 rounded-lg py-1.5 pl-2.5 pr-3 shadow-sm text-gray-400 dark:text-white/50 bg-background-light dark:bg-background-dark dark:brightness-[1.1] dark:ring-1 dark:hover:brightness-[1.25] ring-1 ring-gray-400/20 hover:ring-gray-600/25 dark:ring-gray-600/30 dark:hover:ring-gray-500/30 focus:outline-primary"
+      id="home-search-entry"
+      style={{
+        marginTop: '2rem',
+        maxWidth: '26rem',
+      }}
+      onClick={openSearch}
+    >
+      <svg
+        className="h-4 w-4 ml-1.5 mr-3 flex-none bg-gray-500 hover:bg-gray-600 dark:bg-white/50 dark:hover:bg-white/70"
+        style={{
+          marginRight: '0.5rem',
+         maskImage:
+           'url("https://mintlify.b-cdn.net/v6.5.1/solid/magnifying-glass.svg")',
+         maskRepeat: 'no-repeat',
+         maskPosition: 'center center',
+        }}
+      />
+
+      Search or ask
+    </button>
+    </div>
+    <div className="flex items-center justify-center">
+    <a style={{ marginTop: '2rem' }} href="https://www.hpe.com/us/en/greenlake.html" className="text-primary dark:text-primary text-md font-medium flex items-center">
+      Learn more about HPE GreenLake
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="h-4 w-4 inline-block ml-1"
+      viewBox="0 0 20 20"
+      fill="currentColor"
+    >
+      <path
+        fillRule="evenodd"
+        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+        clipRule="evenodd"
+      />
+    </svg>
+    </a>
+    </div>
+  </div>
+</div>
+
+<div
+  style={{marginTop: '2rem', marginBottom: '8rem', maxWidth: '70rem', marginLeft: 'auto',
+   marginRight: 'auto', paddingLeft: '1.25rem',
+   paddingRight: '1.25rem' }}
+>
+
+  <CardGroup cols={3}>
+    <Card title="Guides" icon="arrows-split-up-and-left" href="docs/greenlake/guides" iconType="solid">
+    Access learning materials and best practices for working with HPE GreenLake APIs
+    </Card>
+
+    <Card title="Services" icon="gears" href="docs/greenlake/services"iconType="solid" >
+    Explore and integrate with a broad catalog of HPE GreenLake cloud services
+    </Card>
+    <Card title="Community" icon="users" href="docs/greenlake/community"iconType="solid">
+    Find more resources to collaborate and build applications and integrations with HPE
+    </Card>
+  </CardGroup>
+
+  <br/>
+
+</div>

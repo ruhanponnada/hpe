@@ -1,0 +1,105 @@
+---
+title: Authentication
+description: The following steps describe how to generate an access token for HPE GreenLake platform services. You need an HPE account to complete these steps.
+---
+
+## Adding services to your workspace
+
+You can use HPE GreenLake platform to add any services listed in the services page of your workspace. You can also think of the **Add** functionality as **service onboarding**.
+
+1.  On the **Services** page, click **Catalog** on the left menu. The **Services** page displays a series of tiles for services that are available to you.
+2.  Click any service to learn more about the service.
+3.  Select **Launch** on the services detail view, and follow the prompts from the **Deploy Service** wizard to deploy the service.
+
+<Note>
+**NOTE**
+
+If you are authorized to add the selected service, a successful provisioning message appears. If you do not have the authorization to add or load this service into your workspace, a failed provisioning message appears. Contact your account administrator for help.
+</Note>
+
+### Requesting access to HPE GreenLake platform APIs
+
+You must create a support request to get access to HPE GreenLake platform APIs.
+
+1.  While logged in to HPE GreenLake platform, click **Help & Support** .
+2.  In the **Help** section, select **HPE GreenLake** .
+3.  In the **Support** section, select **Workspace, User, and Onboarding Support** .
+4.  Fill in the requested details.
+    * Enter your name, company name, email, and phone number.
+    * Choose your preferred contact method, either email or phone.
+    * In **Support Issue Details** , in **What do you need help with?** , choose **HPE GreenLake platform API onboarding** .
+    * Provide the workspace name and the email address associated with it. To find your workspace name, click **Manage** , then click **User** to get the workspace user email address.
+5.  Click **Submit** . A ticket is created with HPE GreenLake support. Expect a resolution within 24 hours.
+
+## Configuring API client credentials
+
+1.  On the HPE GreenLake platform header, click the workspace menu and then select **Manage Workspace** .
+2.  Click the API card.
+3.  Click **Create Credentials** .
+4.  Select the **Service Manager** you want to access.
+5.  Enter the **Credential Name** .
+6.  Click the **Create Credentials** button to continue. The **Credentials Created** screen displays showing your credentials were successfully created.
+7.  Copy the **Client ID** and the **Client Secret** to a safe and secure location. HPE GreenLake platform does not store your Client Secret.
+8.  Select the **Copy icon** to save your information to your desktop.
+9.  Click the **Close** button to continue. You are returned to the main **API** page, where you can now generate the access token using a sample code provided.
+
+## Generate an access token
+
+On the **API** page, you can view API credential details and generate access tokens.
+
+1.  On the **Home** page, click **Manage Workspace** , and then click **API** .
+2.  Click the arrow next to the credential name to display the credential details.
+3.  You can now Generate Access Token or view sample code for generating access tokens.
+4.  Click **Generate Access Token** to continue. The Generate Access Token screen displays.
+5.  Enter your **Client Secret** , and click the **Create Access Token** button. The **Access Token Created** screen displays with your **Access Token** .
+6.  Click **Close** when you are finished.
+
+<Tip>
+**TIP**
+
+Since access tokens are not stored, HPE recommends you make a copy of your access token and keep it in a safe location.
+</Tip>
+
+<Note>
+**NOTE**
+
+The access token can be used as authorization bearer token to make secure REST API calls to HPE GreenLake API services. For example, if using cURL, include `-H 'Authorization: Bearer <YOUR_JWT_HERE>'` in your API request header. Replace `<YOUR_JWT_HERE>` with your token. The API reference documentation on [HPE GreenLake Developer Portal](https://developer.greenlake.hpe.com/docs/greenlake/services/) provides example request headers in multiple programming languages.
+</Note>
+
+### Viewing the code sample for generating an access token
+
+To view the code sample, perform the following steps.
+
+1.  Under the Code Sample for Generating Access Token heading, click **View Code Sample** . The code modal displays.
+2.  Select the programming Language you want to use from the **Select Programming Language** drop-down list.
+3.  Select the client credentials from the **Select Client Credentials** drop-down list. These are credentials you create.
+4.  Enter your client secret in to the **Enter Client Secret** field. The information you selected or entered is displayed in the code sample.
+5.  Click **Copy Code Sample** to make a copy of your access token code.
+6.  Click **&lt;/&gt;** to change your code view between vertical and horizontal.
+7.  Click **Close** when you are finished.
+
+
+## Resetting your client secret
+
+There may be a time when you want to reset your client secret for security purposes. Resetting the client ID and secret will invalidate all tokens associated with the ID and secret.
+
+1.  Click the ellipsis next to the **Generate Access Token** button to reset your client secret.
+2.  Click the **Reset Client Secret** link. The client secret is reset.
+
+## Deleting your client credentials
+
+Deleting the client ID and secret will invalidate all tokens associated with the ID and secret.
+
+1.  Click the ellipsis next to the Generate Access Token button to delete your client credentials.
+2.  Select the **Delete Credentials** link.
+
+<Note>
+**NOTE**
+
+If a user is deleted from HPE GreenLake, any tokens or client IDs generated and associated with any services owned by this user will no longer be valid.
+</Note>
+
+## Points to Remember
+
+* A generated access token is valid for 120 minutes.
+* The credentials created for a user are valid until they are deleted, reset, or the user account is removed.
