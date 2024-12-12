@@ -57,18 +57,18 @@
     },
     {
       "name": "API Client Credentials",
-      "url": "api-reference/api-client",
-      "openapi": "/open-api.json"
+      "url": "api-reference/client-credentials",
+      "openapi": "/api-reference/client-credentials/openapi.json"
     },
     {
       "name": "Audit Logs",
-      "url": "api-reference/audit-logs",
-      "openapi": "/audit-api.json"
+      "url": "api-reference/audit",
+      "openapi": "/api-reference/audit/openapi.json"
     },
     {
       "name": "Backup and Recovery",
       "url": "api-reference/backup",
-      "openapi": "/backup-api.json"
+      "openapi": "/api-reference/backup/openapi.json"
     }
   ],
   "anchors": [
@@ -113,8 +113,19 @@
     {
       "group": "Community",
       "pages": ["docs/greenlake/community/community"]
+    },
+    {
+      "group": "Welcome",
+      "pages": ["api-reference/client-credentials/credentials"]
+    },
+    {
+      "group": "Welcome",
+      "pages": ["api-reference/backup/backup"]
+    },
+    {
+      "group": "Welcome",
+      "pages": ["api-reference/audit/audit"]
     }
-
   ],
   "footerSocials": {
     "x": "https://twitter.com/hpe",
