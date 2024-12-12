@@ -1,0 +1,1127 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "HPE Greenkake for Credential Management API",
+    "description": "With the HPE GreenLake for Credential Management APIs, you can add, update, delete, and get information about user credentials in a standard enterprise, managed service provider (MSP), or MSP tenant workspaces.\n\n  You can view request and response samples for four scenarios while exploring the API reference.\n\n  The Create credential API has sample requests and responses.\n\n  1. In the **Request samples** panel, click the drop-down to choose a scenario.\n\n  2. In the **Response samples** panel, select the **201** tab and click the drop-down to choose a scenario.\n\n  The Get list of credentials and Reset a credential APIs have response samples.\n\n  * In the **Response samples** panel, select the **200** tab and click the drop-down to choose a scenario.\n\n  The four scenarios are:\n\n  * **Workspace credentials for HPE GreenLake service manager**—Provides a sample relevant to HPE GreenLake platform service manager credentials for standard enterprise or MSP workspaces.\n\n  * **MSP tenant credentials for HPE GreenLake service manager**—Provides a sample relevant to HPE GreenLake platform service manager credentials in an MSP tenant workspace.\n\n  * **Workspace credentials for a provisioned service manager**— Gives an example relevant to provisioned service manager credentials for standard enterprise or MSP workspaces.\n\n  * **MSP tenant credentials for a provisioned service manager**—Gives an example relevant to provisioned service manager credentials in an MSP tenant workspace.\n",
+    "version": "1.0.0",
+    "license": {
+      "name": "HPE License",
+      "url": "https://www.hpe.com/us/en/software/licensing.html"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://global.api.greenlake.hpe.com"
+    }
+  ],
+  "security": [
+    {
+      "BearerAuth": []
+    }
+  ],
+  "paths": {
+    "/workspaces/v1/credentials": {
+      "get": {
+        "tags": [
+          "Credential Management"
+        ],
+        "summary": "Get list of credentials",
+        "description": "Retrieve a list of all credentials for a user in a standard enterprise, managed service provider (MSP), or MSP tenant workspace. \n\nNOTE: Use the filter query parameter in an MSP tenant workspace and filter on the `tenantId` property.\n",
+        "operationId": "get_all_credentials_workspaces_v1_msp_tenants__tenantId__credentials_get",
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "description": "Filter data using a subset of OData 4.0 and return only the subset of resources that match the filter. \n\nGet list of credentials that can be filtered by:\n  - tenantId\n",
+            "required": false,
+            "schema": {
+              "title": "Filter",
+              "type": "string",
+              "description": "Filter data using a subset of OData 4.0 and return only the subset of resources that match the filter.\n\nGet list of credentials that can be filtered by:\n- tenantId\n",
+              "default": ""
+            },
+            "examples": {
+              "FilterWithTenantId": {
+                "summary": "Filter with tenantId",
+                "description": "Returns credentials for a user within a particular tenant, only enabled for MSP managed tenants.",
+                "value": "tenantId eq '7600415a-8876-5722-9f3c-b0fd11112283'"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CredentialsResponseList"
+                },
+                "examples": {
+                  "StandaloneOrMSPWorkspacecredentialForGreenlakePlatformServiceManager": {
+                    "summary": "Workspace credentials for HPE GreenLake service manager",
+                    "description": "Returns credentials a user in a standard enterprise or MSP workspace for HPE GreenLake platform service manager.",
+                    "value": {
+                      "items": [
+                        {
+                          "id": "b660baa4-1913-45c1-81a8-fcff6cb82c9d",
+                          "credentialName": "API Credential",
+                          "clientId": "b660baa4-1913-45c1-81a8-fcff6cb82c9d",
+                          "type": "credentials",
+                          "generation": 1,
+                          "createdAt": "2024-01-22 14:09:42.883621",
+                          "updatedAt": "2024-01-22 14:09:42.883621"
+                        }
+                      ],
+                      "count": 1
+                    }
+                  },
+                  "MSPTenantWorkspaceCredentialForGreenlakePlatformServiceManager": {
+                    "summary": "MSP tenant workspace credential for HPE Greenlake service manager",
+                    "description": "Returns credentials for a user within an MSP tenant workspace for HPE GreenLake platform service manager.",
+                    "value": {
+                      "items": [
+                        {
+                          "id": "b660baa4-1913-45c1-81a8-fcff6cb82c9d",
+                          "credentialName": "API Credential",
+                          "clientId": "b660baa4-1913-45c1-81a8-fcff6cb82c9d",
+                          "type": "credentials",
+                          "generation": 1,
+                          "createdAt": "2024-01-22 14:09:42.883621",
+                          "updatedAt": "2024-01-22 14:09:42.883621",
+                          "associatedTenant": {
+                            "resourceUri": "/workspaces/v1/workspaces/c4e21187-2b70-4439-a89f-c588caf0f9c4",
+                            "tenantName": "Acme Tenant"
+                          }
+                        }
+                      ],
+                      "count": 1
+                    }
+                  },
+                  "StandaloneOrMSPWorkspaceCredentialForProvisionedServiceManager": {
+                    "summary": "Workspace credentials for a provisioned service manager",
+                    "description": "Returns credentials for a user within a standard enterprise or MSP workspace for a provisioned service.",
+                    "value": {
+                      "items": [
+                        {
+                          "id": "b660baa4-1913-45c1-81a8-fcff6cb82c9d",
+                          "credentialName": "API Credential",
+                          "clientId": "b660baa4-1913-45c1-81a8-fcff6cb82c9d",
+                          "type": "credentials",
+                          "generation": 1,
+                          "createdAt": "2024-01-22 14:09:42.883621",
+                          "updatedAt": "2024-01-22 14:09:42.883621",
+                          "associatedServiceManagerProvision": {
+                            "resourceUri": "/service-catalog/v1beta1/service-manager-provisions/767c0c92-5ecc-4952-85d6-04a2acaaf050"
+                          }
+                        }
+                      ],
+                      "count": 1
+                    }
+                  },
+                  "MSPTenantWorkspaceCredentialForProvisionedServiceManager": {
+                    "summary": "MSP tenant workspace credential for a provisioned service manager",
+                    "description": "Returns credentials for a user within an MSP workspace for a provisioned service.",
+                    "value": {
+                      "items": [
+                        {
+                          "id": "b660baa4-1913-45c1-81a8-fcff6cb82c9d",
+                          "credentialName": "API Credential",
+                          "clientId": "b660baa4-1913-45c1-81a8-fcff6cb82c9d",
+                          "type": "credentials",
+                          "generation": 1,
+                          "createdAt": "2024-01-22 14:09:42.883621",
+                          "updatedAt": "2024-01-22 14:09:42.883621",
+                          "associatedTenant": {
+                            "resourceUri": "/workspaces/v1/workspaces/c4e21187-2b70-4439-a89f-c588caf0f9c4",
+                            "tenantName": "Acme Tenant"
+                          },
+                          "associatedServiceManagerProvision": {
+                            "resourceUri": "/service-catalog/v1beta1/service-manager-provisions/767c0c92-5ecc-4952-85d6-04a2acaaf050"
+                          }
+                        }
+                      ],
+                      "count": 1
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StandardErrorResponse"
+                },
+                "example": {
+                  "debugId": "d67806f0-844a-4245-9fde-60c53a613525",
+                  "httpStatusCode": 400,
+                  "errorCode": "HPE_GL_WORKSPACES_TENANT_NONEXISTANT",
+                  "message": "Verification Failed"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StandardErrorResponse"
+                },
+                "example": {
+                  "debugId": "d67806f0-844a-4245-9fde-60c53a613525",
+                  "httpStatusCode": 401,
+                  "errorCode": "HPE_GL_ERROR_FORBIDDEN",
+                  "message": "Verification Failed"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StandardErrorResponse"
+                },
+                "example": {
+                  "debugId": "d67806f0-844a-4245-9fde-60c53a613525",
+                  "httpStatusCode": 403,
+                  "errorCode": "HPE_GL_ERROR_FORBIDDEN",
+                  "message": "Not authorised"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StandardErrorResponse"
+                },
+                "example": {
+                  "debugId": "d67806f0-844a-4245-9fde-60c53a613525",
+                  "httpStatusCode": 404,
+                  "errorCode": "HPE_GL_ERROR_NOTFOUND",
+                  "message": "Resource not found"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StandardErrorResponse"
+                },
+                "example": {
+                  "debugId": "d67806f0-844a-4245-9fde-60c53a613525",
+                  "httpStatusCode": 500,
+                  "errorCode": "HPE_GL_WORKSPACES_UNABLE_RETRIEVE_CREDENTIALS",
+                  "message": "Unable to retrieve credentials at this time"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Credential Management"
+        ],
+        "summary": "Create a credential",
+        "description": "Create a new credential in a standard enterprise, managed service provider (MSP), or MSP tenant workspace. \n\nNOTE: In an MSP tenant workspace, use the `associatedTenant` property\n",
+        "operationId": "create_credentials_workspaces_v1_msp_tenants__tenantId__credentials_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TokenAttributes"
+              },
+              "examples": {
+                "StandaloneOrMSPWorkspacecredentialForGreenlakePlatformServiceManager": {
+                  "summary": "Workspace credential for HPE GreenLake service manager",
+                  "description": "Creates a credential for a user in a standard enterprise or MSP workspace for the HPE GreenLake platform service manager.",
+                  "value": {
+                    "credentialName": "API Credential"
+                  }
+                },
+                "MSPTenantWorkspaceCredentialForGreenlakePlatformServiceManager": {
+                  "summary": "MSP tenant workspace credential for Greenlake platform service manager",
+                  "description": "Creates a credential for a user within an MSP tenant workspace for the HPE GreenLake platform service manager.",
+                  "value": {
+                    "credentialName": "API Credential",
+                    "associatedTenant": {
+                      "resourceUri": "/workspaces/v1/workspaces/c4e21187-2b70-4439-a89f-c588caf0f9c4"
+                    }
+                  }
+                },
+                "StandaloneOrMSPWorkspaceCredentialForProvisionedServiceManager": {
+                  "summary": "Workspace credential for a provisioned service manager",
+                  "description": "Creates a credential for a user within a standard enterprise or MSP workspace for a provisioned service manager.",
+                  "value": {
+                    "credentialName": "API Credential",
+                    "associatedServiceManagerProvision": {
+                      "resourceUri": "/service-catalog/v1beta1/service-manager-provisions/767c0c92-5ecc-4952-85d6-04a2acaaf050"
+                    }
+                  }
+                },
+                "MSPTenantWorkspaceCredentialForProvisionedServiceManager": {
+                  "summary": "MSP tenant workspace credential for a provisioned service manager",
+                  "description": "Creates a credential for a user within an MSP tenant workspace for a provisioned service manager.",
+                  "value": {
+                    "credentialName": "API Credential",
+                    "associatedTenant": {
+                      "resourceUri": "/workspaces/v1/workspaces/c4e21187-2b70-4439-a89f-c588caf0f9c4"
+                    },
+                    "associatedServiceManagerProvision": {
+                      "resourceUri": "/service-catalog/v1beta1/service-manager-provisions/767c0c92-5ecc-4952-85d6-04a2acaaf050"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "headers": {
+              "Location": {
+                "schema": {
+                  "title": "Location",
+                  "type": "string",
+                  "description": "Endpoint to create a credential"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Credentials"
+                },
+                "examples": {
+                  "StandaloneOrMSPWorkspacecredentialForGreenlakePlatformServiceManager": {
+                    "summary": "Workspace credentials for HPE GreenLake service manager",
+                    "description": "Returns credentials for a user within a workspace.",
+                    "value": {
+                      "id": "b660baa4-1913-45c1-81a8-fcff6cb82c9d",
+                      "credentialName": "API Credential",
+                      "clientId": "b660baa4-1913-45c1-81a8-fcff6cb82c9d",
+                      "clientSecret": "85ab1d2edc7a11ee814ade11d8f0058f",
+                      "type": "credentials",
+                      "generation": 1,
+                      "createdAt": "2024-01-22 14:09:42.883621",
+                      "updatedAt": "2024-01-22 14:09:42.883621"
+                    }
+                  },
+                  "MSPTenantWorkspaceCredentialForGreenlakePlatformServiceManager": {
+                    "summary": "MSP tenant workspace credential for HPE GreenLake service manager",
+                    "description": "Returns the credentials created for a user.",
+                    "value": {
+                      "id": "b660baa4-1913-45c1-81a8-fcff6cb82c9d",
+                      "credentialName": "API Credential",
+                      "clientId": "b660baa4-1913-45c1-81a8-fcff6cb82c9d",
+                      "clientSecret": "85ab1d2edc7a11ee814ade11d8f0058f",
+                      "type": "credentials",
+                      "generation": 1,
+                      "createdAt": "2024-01-22 14:09:42.883621",
+                      "updatedAt": "2024-01-22 14:09:42.883621",
+                      "associatedTenant": {
+                        "resourceUri": "/workspaces/v1/workspaces/c4e21187-2b70-4439-a89f-c588caf0f9c4",
+                        "tenantName": "Acme Tenant"
+                      }
+                    }
+                  },
+                  "StandaloneOrMSPWorkspaceCredentialForProvisionedServiceManager": {
+                    "summary": "Workspace credentials for a provisioned service manager",
+                    "description": "Returns the credentials created for a user.",
+                    "value": {
+                      "id": "b660baa4-1913-45c1-81a8-fcff6cb82c9d",
+                      "credentialName": "API Credential",
+                      "clientId": "b660baa4-1913-45c1-81a8-fcff6cb82c9d",
+                      "clientSecret": "85ab1d2edc7a11ee814ade11d8f0058f",
+                      "type": "credentials",
+                      "generation": 1,
+                      "createdAt": "2024-01-22 14:09:42.883621",
+                      "updatedAt": "2024-01-22 14:09:42.883621",
+                      "associatedServiceManagerProvision": {
+                        "resourceUri": "/service-catalog/v1beta1/service-manager-provisions/767c0c92-5ecc-4952-85d6-04a2acaaf050"
+                      }
+                    }
+                  },
+                  "MSPTenantWorkspaceCredentialForProvisionedServiceManager": {
+                    "summary": "MSP tenant workspace credential for a provisioned service manager",
+                    "description": "Returns the credentials created for a user.",
+                    "value": {
+                      "id": "b660baa4-1913-45c1-81a8-fcff6cb82c9d",
+                      "credentialName": "API Credential",
+                      "clientId": "b660baa4-1913-45c1-81a8-fcff6cb82c9d",
+                      "clientSecret": "85ab1d2edc7a11ee814ade11d8f0058f",
+                      "type": "credentials",
+                      "generation": 1,
+                      "createdAt": "2024-01-22 14:09:42.883621",
+                      "updatedAt": "2024-01-22 14:09:42.883621",
+                      "associatedTenant": {
+                        "resourceUri": "/workspaces/v1/workspaces/c4e21187-2b70-4439-a89f-c588caf0f9c4",
+                        "tenantName": "Acme Tenant"
+                      },
+                      "associatedServiceManagerProvision": {
+                        "resourceUri": "/service-catalog/v1beta1/service-manager-provisions/767c0c92-5ecc-4952-85d6-04a2acaaf050"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StandardErrorResponse"
+                },
+                "example": {
+                  "debugId": "d67806f0-844a-4245-9fde-60c53a613525",
+                  "httpStatusCode": 400,
+                  "errorCode": "HPE_GL_WORKSPACES_TENANT_NONEXISTANT",
+                  "message": "Bad request"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StandardErrorResponse"
+                },
+                "example": {
+                  "debugId": "d67806f0-844a-4245-9fde-60c53a613525",
+                  "httpStatusCode": 401,
+                  "errorCode": "HPE_GL_ERROR_FORBIDDEN",
+                  "message": "Verification Failed"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StandardErrorResponse"
+                },
+                "example": {
+                  "debugId": "d67806f0-844a-4245-9fde-60c53a613525",
+                  "httpStatusCode": 401,
+                  "errorCode": "HPE_GL_ERROR_FORBIDDEN",
+                  "message": "Verification Failed"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StandardErrorResponse"
+                },
+                "example": {
+                  "debugId": "d67806f0-844a-4245-9fde-60c53a613525",
+                  "httpStatusCode": 404,
+                  "errorCode": "HPE_GL_ERROR_NOTFOUND",
+                  "message": "Resource not found"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StandardErrorResponse"
+                },
+                "example": {
+                  "debugId": "d67806f0-844a-4245-9fde-60c53a613525",
+                  "httpStatusCode": 409,
+                  "errorCode": "HPE_GL_WORKSPACES_UNABLE_CREATE_CREDENTIALS",
+                  "message": "Credential name already created."
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StandardErrorResponse"
+                },
+                "example": {
+                  "debugId": "d67806f0-844a-4245-9fde-60c53a613525",
+                  "httpStatusCode": 500,
+                  "errorCode": "HPE_GL_WORKSPACES_UNABLE_CREATE_CREDENTIALS",
+                  "message": "Unable to create credentials at this time"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/workspaces/v1/credentials/{credentialId}": {
+      "delete": {
+        "tags": [
+          "Credential Management"
+        ],
+        "summary": "Delete a credential",
+        "description": "Delete a credential for a user in a standard enterprise, managed service provider (MSP), or MSP tenant workspace.",
+        "operationId": "delete_credentials_workspaces_v1_msp_tenants__tenantId__credentials__credentialId__delete",
+        "parameters": [
+          {
+            "description": "The unique ID of the credential",
+            "required": true,
+            "schema": {
+              "title": "Credential Id",
+              "type": "string",
+              "description": "The unique ID of the credential",
+              "format": "uuid"
+            },
+            "example": "7600415a-8876-5722-9f3c-b0fd11112283",
+            "name": "credentialId",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StandardErrorResponse"
+                },
+                "example": {
+                  "debugId": "d67806f0-844a-4245-9fde-60c53a613525",
+                  "httpStatusCode": 400,
+                  "errorCode": "HPE_GL_WORKSPACES_TENANT_NONEXISTANT",
+                  "message": "Bad request"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StandardErrorResponse"
+                },
+                "example": {
+                  "debugId": "d67806f0-844a-4245-9fde-60c53a613525",
+                  "httpStatusCode": 401,
+                  "errorCode": "HPE_GL_ERROR_FORBIDDEN",
+                  "message": "Verification Failed"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StandardErrorResponse"
+                },
+                "example": {
+                  "debugId": "d67806f0-844a-4245-9fde-60c53a613525",
+                  "httpStatusCode": 403,
+                  "errorCode": "HPE_GL_WORKSPACES_UNABLE_DELETE_CREDENTIALS",
+                  "message": "Not authorized to delete credentials"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StandardErrorResponse"
+                },
+                "example": {
+                  "debugId": "d67806f0-844a-4245-9fde-60c53a613525",
+                  "httpStatusCode": 404,
+                  "errorCode": "HPE_GL_WORKSPACES_UNABLE_RETRIEVE_CREDENTIALS",
+                  "message": "Unable to find the credential"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StandardErrorResponse"
+                },
+                "example": {
+                  "debugId": "d67806f0-844a-4245-9fde-60c53a613525",
+                  "httpStatusCode": 500,
+                  "errorCode": "HPE_GL_WORKSPACES_UNABLE_DELETE_CREDENTIALS",
+                  "message": "Unable to delete credentials at this time"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/workspaces/v1/credentials/{credentialId}/reset": {
+      "post": {
+        "tags": [
+          "Credential Management"
+        ],
+        "summary": "Reset a credential",
+        "description": "Reset the client secret for a credential in a standard enterprise, managed service provider (MSP), or MSP tenant workspace.",
+        "operationId": "reset_credential_workspaces_v1_msp_tenants__tenantId__credentials__credentialId__reset_post",
+        "parameters": [
+          {
+            "description": "The unique ID of the credential.",
+            "required": true,
+            "schema": {
+              "title": "Credential Id",
+              "type": "string",
+              "description": "The unique ID of the credential.",
+              "format": "uuid"
+            },
+            "name": "credentialId",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Credentials"
+                },
+                "examples": {
+                  "StandaloneOrMSPWorkspacecredentialForGreenlakePlatformServiceManager": {
+                    "summary": "Workspace credential for HPE Greenlake service manager platform service manager",
+                    "description": "Reset the client secret for a given credential.",
+                    "value": {
+                      "id": "b660baa4-1913-45c1-81a8-fcff6cb82c9d",
+                      "credentialName": "API Credential",
+                      "clientId": "b660baa4-1913-45c1-81a8-fcff6cb82c9d",
+                      "clientSecret": "85ab1d2edc7a11ee814ade11d8f0058f",
+                      "type": "credentials",
+                      "generation": 1,
+                      "createdAt": "2024-01-22 14:09:42.883621",
+                      "updatedAt": "2024-01-22 14:09:42.883621"
+                    }
+                  },
+                  "MSPTenantWorkspaceCredentialForGreenlakePlatformServiceManager": {
+                    "summary": "MSP tenant workspace credential for Greenlake platform service manager",
+                    "description": "Reset the client secret for a given credential.",
+                    "value": {
+                      "id": "b660baa4-1913-45c1-81a8-fcff6cb82c9d",
+                      "credentialName": "API Credential",
+                      "clientId": "b660baa4-1913-45c1-81a8-fcff6cb82c9d",
+                      "clientSecret": "85ab1d2edc7a11ee814ade11d8f0058f",
+                      "type": "credentials",
+                      "generation": 1,
+                      "createdAt": "2024-01-22 14:09:42.883621",
+                      "updatedAt": "2024-01-22 14:09:42.883621",
+                      "associatedTenant": {
+                        "resourceUri": "/workspaces/v1/workspaces/c4e21187-2b70-4439-a89f-c588caf0f9c4",
+                        "tenantName": "Acme Tenant"
+                      }
+                    }
+                  },
+                  "StandaloneOrMSPWorkspaceCredentialForProvisionedServiceManager": {
+                    "summary": "Workspace credential for a provisioned service manager",
+                    "description": "Reset the client secret for a given credential.",
+                    "value": {
+                      "id": "b660baa4-1913-45c1-81a8-fcff6cb82c9d",
+                      "credentialName": "API Credential",
+                      "clientId": "b660baa4-1913-45c1-81a8-fcff6cb82c9d",
+                      "clientSecret": "85ab1d2edc7a11ee814ade11d8f0058f",
+                      "type": "credentials",
+                      "generation": 1,
+                      "createdAt": "2024-01-22 14:09:42.883621",
+                      "updatedAt": "2024-01-22 14:09:42.883621",
+                      "associatedServiceManagerProvision": {
+                        "resourceUri": "/service-catalog/v1beta1/service-manager-provisions/767c0c92-5ecc-4952-85d6-04a2acaaf050"
+                      }
+                    }
+                  },
+                  "MSPTenantWorkspaceCredentialForProvisionedServiceManager": {
+                    "summary": "MSP tenant workspace credential for a provisioned service manager",
+                    "description": "Reset the client secret for a given credential.",
+                    "value": {
+                      "id": "b660baa4-1913-45c1-81a8-fcff6cb82c9d",
+                      "credentialName": "API Credential",
+                      "clientId": "b660baa4-1913-45c1-81a8-fcff6cb82c9d",
+                      "clientSecret": "85ab1d2edc7a11ee814ade11d8f0058f",
+                      "type": "credentials",
+                      "generation": 1,
+                      "createdAt": "2024-01-22 14:09:42.883621",
+                      "updatedAt": "2024-01-22 14:09:42.883621",
+                      "associatedTenant": {
+                        "resourceUri": "/workspaces/v1/workspaces/c4e21187-2b70-4439-a89f-c588caf0f9c4",
+                        "tenantName": "Acme Tenant"
+                      },
+                      "associatedServiceManagerProvision": {
+                        "resourceUri": "/service-catalog/v1beta1/service-manager-provisions/767c0c92-5ecc-4952-85d6-04a2acaaf050"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StandardErrorResponse"
+                },
+                "example": {
+                  "debugId": "d67806f0-844a-4245-9fde-60c53a613525",
+                  "httpStatusCode": 400,
+                  "errorCode": "HPE_GL_WORKSPACES_TENANT_NONEXISTANT",
+                  "message": "Bad request"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StandardErrorResponse"
+                },
+                "example": {
+                  "debugId": "d67806f0-844a-4245-9fde-60c53a613525",
+                  "httpStatusCode": 401,
+                  "errorCode": "HPE_GL_ERROR_FORBIDDEN",
+                  "message": "Verification Failed"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StandardErrorResponse"
+                },
+                "example": {
+                  "debugId": "d67806f0-844a-4245-9fde-60c53a613525",
+                  "httpStatusCode": 401,
+                  "errorCode": "HPE_GL_WORKSPACES_UNABLE_RESET_CREDENTIALS",
+                  "message": "Not authorized to reset credentials"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StandardErrorResponse"
+                },
+                "example": {
+                  "debugId": "d67806f0-844a-4245-9fde-60c53a613525",
+                  "httpStatusCode": 404,
+                  "errorCode": "HPE_GL_ERROR_NOTFOUND",
+                  "message": "Resource not found"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StandardErrorResponse"
+                },
+                "example": {
+                  "debugId": "d67806f0-844a-4245-9fde-60c53a613525",
+                  "httpStatusCode": 409,
+                  "errorCode": "HPE_GL_WORKSPACES_UNABLE_CREATE_CREDENTIALS",
+                  "message": "Credential name already created."
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StandardErrorResponse"
+                },
+                "example": {
+                  "debugId": "d67806f0-844a-4245-9fde-60c53a613525",
+                  "httpStatusCode": 500,
+                  "errorCode": "HPE_GL_WORKSPACES_UNABLE_DELETE_CREDENTIALS",
+                  "message": "Unable to reset credentials at this time"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Credentials": {
+        "title": "Credentials",
+        "required": [
+          "id",
+          "credentialName",
+          "clientId",
+          "clientSecret",
+          "type",
+          "generation",
+          "createdAt",
+          "updatedAt"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "title": "Id",
+            "type": "string",
+            "description": "The unique ID of the credential",
+            "format": "uuid"
+          },
+          "credentialName": {
+            "title": "Credential Name",
+            "type": "string",
+            "description": "Name of the credential"
+          },
+          "clientId": {
+            "title": "Client Id",
+            "type": "string",
+            "description": "The client ID of the credential",
+            "format": "uuid"
+          },
+          "clientSecret": {
+            "title": "Client Secret",
+            "type": "string",
+            "description": "The client secret of the credential"
+          },
+          "type": {
+            "title": "Resource Type",
+            "type": "string",
+            "description": "The type of resource"
+          },
+          "generation": {
+            "title": "Generation",
+            "type": "integer",
+            "description": "Monotonically increasing update counter"
+          },
+          "createdAt": {
+            "title": "Created at",
+            "type": "string",
+            "description": "Time the credential was created in UTC"
+          },
+          "updatedAt": {
+            "title": "Updated at",
+            "type": "string",
+            "description": "Time the credential was updated in UTC"
+          },
+          "associatedTenant": {
+            "title": "Associated Tenant",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AssociatedTenantResponse"
+              }
+            ],
+            "description": "Associated tenant for the credentials being created"
+          },
+          "associatedServiceManagerProvision": {
+            "title": "Associated Service Manager Provision",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AssociatedServiceManagerProvision"
+              }
+            ]
+          }
+        }
+      },
+      "CredentialsResponse": {
+        "title": "CredentialsResponse",
+        "required": [
+          "credentialName",
+          "id",
+          "clientId",
+          "type",
+          "generation",
+          "createdAt",
+          "updatedAt"
+        ],
+        "type": "object",
+        "properties": {
+          "credentialName": {
+            "title": "Credential Name",
+            "type": "string",
+            "description": "Name of the credential"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string",
+            "description": "The ID of the credential created",
+            "format": "uuid"
+          },
+          "clientId": {
+            "title": "Client ID",
+            "type": "string",
+            "description": "Client ID of the credential created",
+            "format": "uuid"
+          },
+          "type": {
+            "title": "Resource Type",
+            "type": "string",
+            "description": "The type of resource"
+          },
+          "generation": {
+            "title": "Generation",
+            "type": "integer",
+            "description": "Monotonically increasing update counter"
+          },
+          "createdAt": {
+            "title": "Created at",
+            "type": "string",
+            "description": "Time the credential was created in UTC"
+          },
+          "updatedAt": {
+            "title": "Updated at",
+            "type": "string",
+            "description": "Time the credential was updated in UTC"
+          },
+          "associatedTenant": {
+            "title": "Associated Tenant",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AssociatedTenantResponse"
+              }
+            ],
+            "description": "Associated tenant for the credentials being created"
+          },
+          "associatedServiceManagerProvision": {
+            "title": "Associated Service Manager Provision",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AssociatedServiceManagerProvision"
+              }
+            ]
+          }
+        },
+        "description": "The response model for credentials distributed via the workspaces apis"
+      },
+      "CredentialsResponseList": {
+        "title": "CredentialsResponseList",
+        "required": [
+          "items",
+          "count"
+        ],
+        "type": "object",
+        "properties": {
+          "items": {
+            "title": "Items",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CredentialsResponse"
+            },
+            "description": "Multiple returned credential responses"
+          },
+          "count": {
+            "title": "Count",
+            "type": "integer",
+            "description": "The number of credentials returned",
+            "examples": [
+              5
+            ]
+          }
+        },
+        "description": "Captures multiple returned credentials responses"
+      },
+      "StandardErrorResponse": {
+        "title": "StandardErrorResponse",
+        "required": [
+          "debugId",
+          "httpStatusCode",
+          "errorCode",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "debugId": {
+            "title": "Debugid",
+            "type": "string",
+            "description": "A unique identifier for this error used to help with troubleshooting."
+          },
+          "httpStatusCode": {
+            "title": "Httpstatuscode",
+            "type": "integer",
+            "description": "HTTP status code"
+          },
+          "errorCode": {
+            "title": "Errorcode",
+            "type": "string",
+            "description": "HPE GreenLake standard error code"
+          },
+          "message": {
+            "title": "Message",
+            "type": "string",
+            "description": "A user-friendly error message."
+          }
+        },
+        "description": "Standard GreenLake error response model"
+      },
+      "TokenAttributes": {
+        "title": "TokenAttributes",
+        "required": [
+          "credentialName"
+        ],
+        "type": "object",
+        "properties": {
+          "credentialName": {
+            "title": "Credential Name",
+            "type": "string",
+            "description": "Name of the credential",
+            "examples": [
+              "My Credential"
+            ]
+          },
+          "associatedTenant": {
+            "title": "Associated Tenant",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AssociatedTenant"
+              }
+            ],
+            "description": "Associated tenant for the credentials being created"
+          },
+          "associatedServiceManagerProvision": {
+            "title": "Associated Service Manager Provision",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AssociatedServiceManagerProvision"
+              }
+            ]
+          }
+        }
+      },
+      "AssociatedTenant": {
+        "title": "Associated Tenant",
+        "required": [
+          "resourceUri"
+        ],
+        "type": "object",
+        "description": "The tenant reference associated with the credential",
+        "properties": {
+          "resourceUri": {
+            "title": "Resource Uri",
+            "type": "string",
+            "description": "The unique URI of the MSPs reference to the tenant",
+            "examples": [
+              "/workspaces/v1/workspace/1aa44f65-5747-4542-ba1c-2c913f46aca2"
+            ]
+          }
+        }
+      },
+      "AssociatedTenantResponse": {
+        "title": "Associated Tenant",
+        "required": [
+          "resourceUri",
+          "tenantName"
+        ],
+        "type": "object",
+        "description": "The tenant reference associated with the credential",
+        "properties": {
+          "resourceUri": {
+            "title": "Resource Uri",
+            "type": "string",
+            "description": "The unique URI of the MSPs reference to the tenant",
+            "examples": [
+              "/workspaces/v1/workspace/1aa44f65-5747-4542-ba1c-2c913f46aca2"
+            ]
+          },
+          "tenantName": {
+            "title": "The Tenant name",
+            "type": "string",
+            "description": "The name of the tenant the resourceUri is associated with",
+            "examples": [
+              "My Tenant"
+            ]
+          }
+        }
+      },
+      "AssociatedServiceManagerProvision": {
+        "title": "AssociatedServiceManagerProvision",
+        "required": [
+          "resourceUri"
+        ],
+        "type": "object",
+        "properties": {
+          "resourceUri": {
+            "title": "Resource URI",
+            "type": "string",
+            "description": "The resource URI of the service manager provision"
+          }
+        },
+        "description": "Service Manager Provision for the credentials."
+      }
+    },
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  }
+}
