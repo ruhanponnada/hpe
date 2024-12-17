@@ -57,8 +57,8 @@
     },
     {
       "name": "API Client Credentials",
-      "url": "api-reference/client-credentials",
-      "openapi": "/api-reference/client-credentials/openapi.json"
+      "url": "api-reference/client-test",
+      "openapi": "/api-reference/client-test/openapi.json"
     },
     {
       "name": "Audit Logs",
@@ -116,7 +116,7 @@
     },
     {
       "group": "Welcome",
-      "pages": ["api-reference/client-credentials/credentials"]
+      "pages": ["api-reference/client-test/client-test"]
     },
     {
       "group": "Welcome",
